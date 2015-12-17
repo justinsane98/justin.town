@@ -1,0 +1,134 @@
+*, *:before, *:after
+  box-sizing: border-box
+
+body
+  font-family: $base-font
+  background-color: $orange
+  color: $brown
+  font-size: 14px
+
+.wrapper
+  overflow-x: hidden
+  overflow-y: auto
+  -webkit-overflow-scrolling: touch
+  position: relative
+  padding: $spacing $spacing $footer-height + $spacing * 2
+
+header
+  position: absolute
+  width: 110%
+  left: 0
+  top: -10px
+  height: 30px
+  background-color: $red
+  transform: rotate(2deg)
+  border-bottom: 4px solid $red-on-orange
+
+.logo
+  background-image: url('/images/logo.svg')
+  background-repeat: no-repeat
+  background-size: 100% auto
+  width: 126px
+  height: 205px
+  margin: $spacing*2 auto
+h1,
+h2,
+h3
+  font-family: $cursive-font
+  color: $white
+  font-weight: normal
+
+h1
+  font-size: 48px
+  text-shadow: 2px 2px 0 $white-on-orange
+  margin: 0 0 10px
+  .tm
+    font-size: 20px
+    vertical-align: top
+    text-transform: uppercase
+p
+  margin: 0 0 20px
+  line-height: 30px
+  a
+    color: $brown
+    border-bottom: 1px solid $white-on-orange
+a
+  text-decoration: none
+
+footer
+  position: absolute
+  display: block
+  width: 100%
+  height: $footer-height
+  left: 0
+  bottom: 0
+  padding: $spacing
+  background-color: $brown
+  text-align: center
+  &:after
+    content: ""
+    display: table
+    clear: both
+  p
+    color: $orange
+  &:before
+    content: ''
+    display: block
+    position: absolute
+    top: -$spacing
+    left: -$spacing
+    height: $spacing * 2
+    width: 110%
+    background-color: $brown
+    border-top: 4px solid $orange-and-brown
+    transform: rotate(2deg)
+
+.available,
+.contact
+  width: 50%
+  float: left
+
+.available
+  text-align: right
+  padding-right: $spacing
+
+.month,
+.year
+  display: inline-block
+  margin: 0
+  padding: 0
+  text-shadow: 2px 2px 0 $white-on-brown
+
+.month
+  font-size: 64px
+
+.year
+  font-size: 100px
+  margin-top: -$spacing/2
+  position: relative
+  left: -10px
+
+.contact
+  perspective: 100px
+  text-align: left
+  margin-top: 30px
+  padding-left: $spacing
+  border-left: 1px solid rgba($white, 0.1)
+.button
+  display: inline-block
+  border-radius: 3px
+  padding: 10px 20px
+  background-color: $orange
+  color: $white
+  transform: rotateY(-10deg)
+  box-shadow: 4px 4px 0 0 $orange-and-brown
+  font-size: 36px
+  font-family: $cursive-font
+  text-shadow: 2px 2px 0 $white-on-orange
+  &:hover
+    position: relative
+    top: 1px
+    left: 1px
+    box-shadow: 3px 3px 0 0 $orange-and-brown
+  &:active
+    background-color: lighten($orange, 5%)

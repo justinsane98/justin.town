@@ -1,0 +1,48 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+@import url(https://fonts.googleapis.com/css?family=Just+Another+Hand);
+
+// Our variables
+$base-font: Georgia, serif;
+$cursive-font: 'Just Another Hand', cursive;
+$base-font-size:   16px;
+
+// colors
+$orange: #F5A623;
+$red: #D01D1B;
+$white: #fff;
+$brown: #4B2F15;
+
+// shadow colors
+$red-on-orange: #E16323;
+$white-on-orange: #B67B1B;
+$white-on-brown: #77624F;
+$orange-and-brown: #9E6926;
+
+$footer-height: 250px;
+
+$spacing: 20px;
+
+// Width of the content area
+$content-width: 800px;
+
+// Use media queries like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import
+  "normalize",
+  "base"
+;
