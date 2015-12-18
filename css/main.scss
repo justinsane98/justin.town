@@ -25,21 +25,17 @@ $footer-height: 250px;
 
 $spacing: 20px;
 
-// Width of the content area
-$content-width: 800px;
-
-// Use media queries like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
-@mixin media-query($device) {
-    @media screen and (max-width: $device) {
-        @content;
-    }
-}
+$width-320:  "screen and (min-width: 320px)";
+$width-375:  "screen and (min-width: 375px)";
+$width-414:  "screen and (min-width: 414px)";
+$width-480:  "screen and (min-width: 480px)";
+$width-568:  "screen and (min-width: 568px)";
+$width-667:  "screen and (min-width: 667px)";
+$width-736:  "screen and (min-width: 736px)";
+$width-768:  "screen and (min-width: 768px)";
+$width-1024: "screen and (min-width: 1024px)";
+$width-1224: "screen and (min-width: 1224px)";
+$width-1400: "screen and (min-width: 1400px)";
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import

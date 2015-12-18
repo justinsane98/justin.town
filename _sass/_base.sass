@@ -7,12 +7,27 @@ body
   color: $brown
   font-size: 14px
 
+.perspective
+  perspective: 100px
+  max-width: 100px
+
+.right-align
+  float: right
+  margin-right: $spacing/2
+
 .wrapper
   overflow-x: hidden
-  overflow-y: auto
+  overflow-y: scroll
   -webkit-overflow-scrolling: touch
+  min-width: 320px
   position: relative
+  display: block
   padding: $spacing $spacing $footer-height + $spacing * 2
+  @media #{$width-414}
+    padding: $spacing $spacing * 2 $footer-height + $spacing * 4
+  .contact-modal-active &,
+  .thanks-modal-active &
+    display: none
 
 header
   position: absolute
@@ -22,7 +37,18 @@ header
   height: 30px
   background-color: $red
   transform: rotate(2deg)
+  @media #{$width-480}
+    transform: rotate(1deg)
   border-bottom: 4px solid $red-on-orange
+.content
+  @media #{$width-768}
+    margin: 0 auto
+    width: 550px
+  @media #{$width-1024}
+    position: relative
+    margin: 100px auto
+    padding-left: 390px
+    width: 900px
 
 .logo
   background-image: url('/images/logo.svg')
@@ -31,6 +57,25 @@ header
   width: 126px
   height: 205px
   margin: $spacing*2 auto
+  @media #{$width-414}
+    width: 146px
+    height: 235px
+  @media #{$width-768}
+    width: 166px
+    height: 275px
+  @media #{$width-1024}
+    position: absolute
+    top: 0
+    left: 0
+    width: 345px
+    height: 565px
+    margin-top: 0
+    .thanks-modal &
+      position: static
+      width: 166px
+      height: 275px
+      margin-top: $spacing*2
+
 h1,
 h2,
 h3
@@ -42,6 +87,13 @@ h1
   font-size: 48px
   text-shadow: 2px 2px 0 $white-on-orange
   margin: 0 0 10px
+  @media #{$width-375}
+    text-align: center
+    font-size: 64px
+  @media #{$width-1024}
+    text-align: left
+    .thanks-modal &
+      text-align: center
   .tm
     font-size: 20px
     vertical-align: top
@@ -49,6 +101,12 @@ h1
 p
   margin: 0 0 20px
   line-height: 30px
+  @media #{$width-375}
+    font-size: 16px
+    line-height: 32px
+  @media #{$width-414}
+    font-size: 18px
+    line-height: 36px
   a
     color: $brown
     border-bottom: 1px solid $white-on-orange
@@ -65,6 +123,7 @@ footer
   padding: $spacing
   background-color: $brown
   text-align: center
+  z-index: 1
   &:after
     content: ""
     display: table
@@ -82,6 +141,8 @@ footer
     background-color: $brown
     border-top: 4px solid $orange-and-brown
     transform: rotate(2deg)
+    @media #{$width-480}
+      transform: rotate(1deg)
 
 .available,
 .contact
@@ -91,6 +152,12 @@ footer
 .available
   text-align: right
   padding-right: $spacing
+  @media #{$width-480}
+    padding-left: 60px
+  @media #{$width-568}
+    padding-left: 120px
+  @media #{$width-768}
+    padding-left: 30%
 
 .month,
 .year
@@ -109,11 +176,11 @@ footer
   left: -10px
 
 .contact
-  perspective: 100px
   text-align: left
   margin-top: 30px
   padding-left: $spacing
   border-left: 1px solid rgba($white, 0.1)
+
 .button
   display: inline-block
   border-radius: 3px
@@ -125,10 +192,97 @@ footer
   font-size: 36px
   font-family: $cursive-font
   text-shadow: 2px 2px 0 $white-on-orange
+  border: none
+  .contact-form &
+    background-color: $red
+    box-shadow: 4px 4px 0 0 $red-on-orange
+    text-shadow: 2px 2px 0 $red-on-orange
   &:hover
     position: relative
     top: 1px
     left: 1px
     box-shadow: 3px 3px 0 0 $orange-and-brown
+    .contact-form &
+      box-shadow: 3px 3px 0 $red-on-orange
   &:active
     background-color: lighten($orange, 5%)
+    .contact-form &
+      background-color: lighten($red, 5%)
+
+// contact form
+.modal
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  width: 100%
+  height: 100%
+  z-index: 2
+  display: none
+  position: fixed
+  background-color: $orange
+  &.contact-modal
+    .contact-modal-active &
+      display: block
+  &.thanks-modal
+    text-align: center
+    .thanks-modal-active &
+      display: block
+.contact-form
+  display: block
+  margin: 70px $spacing 0
+  @media #{$width-768}
+    max-width: 50%
+    margin-left: auto
+    margin-right: auto
+  input[type='text'],
+  textarea
+    width: 100%
+    border: none
+    border-radius: 3px
+    margin-bottom: 10px
+    padding: $spacing / 2
+    color: $brown
+  input,
+  textarea
+    &:focus
+      outline: 0
+  ::-webkit-input-placeholder
+    color: rgba($brown, 0.5)
+
+  input[type='text']
+    height: 40px
+  textarea
+    height: $spacing * 5
+  h1
+    text-align: left !important
+
+.close-modal
+  display: block
+  width: 50px
+  height: 50px
+  position: absolute
+  top: $spacing/2
+  right: $spacing/2
+  background-color: $orange
+  border-radius: 5px
+  &:before,
+  &:after
+    content: ''
+    display: block
+    border-radius: 3px
+    position: absolute
+    top: 50%
+    left: 50%
+    background-color: $white
+    transform: rotate(45deg)
+    box-shadow: 2px 2px 0 $white-on-orange
+  &:before
+    width: 24px
+    height: 4px
+    margin-left: -10px
+    margin-top: -2px
+  &:after
+    width: 4px
+    height: 24px
+    margin-top: -12px
