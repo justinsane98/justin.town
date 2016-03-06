@@ -1,5 +1,9 @@
 $(function() {
 
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var d = new Date();
+  $('.month .name').text(months[d.getMonth() + 1]);
+
   if(window.location.hash == '#thanks'){
     $('body').addClass('thanks-modal-active');
     var t;
